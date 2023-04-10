@@ -1,0 +1,142 @@
+
+
+.dropdown-menu.show , .form-control:focus  {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.dropdown-item >label{
+
+  cursor: pointer;
+
+}
+
+.deals-rext{
+  font-size: small !important;
+}
+
+.row>* {
+  padding-right:0 !important;
+  padding-left:0 !important;
+}
+.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
+  background-color:white;
+}
+
+.boraderChek:focus{
+  border: 2px solid black !important ;
+}
+
+.btn:hover , .bg-light {
+    background-color:white !important;
+}
+
+.search{
+  position: relative;
+}
+
+  .search input{
+   text-indent: 25px;
+   border: 1px solid #d6d4d4;
+  }
+
+  .search input:focus{
+   box-shadow: none;
+   border: 1px solid black !important;
+  }
+
+  .search .fa-search{
+   position: absolute;
+   top: 10px;
+   left: 16px;
+  }
+.btn-primary{
+  background-color: rgb(165, 24, 165) !important;
+}
+
+.btn-primary:hover{
+  background-color: rgb(192, 72, 192) !important;
+}
+
+.bg-gray{
+  background-color: rgba(217, 234, 241, 0.384);
+}
+
+.card{
+  max-height: 180px;
+  min-height: 180px;
+}
+
+.bg-DarkGry{
+  background-color:  #8f8989b6;
+}
+li > a{
+  cursor: pointer;
+}
+.text-gray
+{
+  color: #8f8989b6;
+}
+span{
+  cursor: pointer;
+}
+
+
+.hovertext {
+  position: relative;
+  border-bottom: 1px dotted black;
+}
+.tooltipBella{
+  position: relative;
+  cursor: pointer;
+}
+
+.s-Text{
+  font-size: 10px;
+}
+.testSpan{
+  visibility: hidden;
+  opacity: 0;
+  width: 140px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 0;
+  transition: opacity 1s ease-in-out;
+  position: absolute;
+  z-index: 1;
+  left:-100%;
+  bottom:110%;
+}
+.tooltipBella:hover .testSpan{
+  opacity: 1;
+  visibility: visible;
+}
+.hovertext:before {
+  content: attr(title);
+  visibility: hidden;
+  opacity: 0;
+  width: 140px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 0;
+  transition: opacity 1s ease-in-out;
+
+  position: absolute;
+  z-index: 1;
+  left: 0%;
+  bottom:100%;
+}
+
+.hovertext:hover:before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.itemDeal
+{
+  background-color: white;
+}
+
+

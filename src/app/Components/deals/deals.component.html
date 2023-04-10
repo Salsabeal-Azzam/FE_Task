@@ -1,0 +1,436 @@
+<div class="container mt-5 py-5">
+
+  <div class="row">
+    <div class="col-lg-1 col-md-12 me-5 ">
+      <div class="">
+        <p class="h4">Deals</p>
+      </div>
+    </div>
+
+    <div class="offset-1 me-3 mb-sm-2 col-lg-4 col-md-12 d-flex justify-content-start">
+      <div class="me-1">
+        <div class="dropdown">
+          <button class="btn bg-light dropdown-toggle border boraderChek " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+           Segment:All
+          </button>
+
+          <div class="dropdown-menu">
+            <div class="dropdown-item">
+              <input class="form-check-input me-2 " type="checkbox" value="" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault">
+                Segment A (21)
+              </label>
+            </div>
+
+            <div class="dropdown-item">
+              <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckChecked" checked>
+              <label class="form-check-label" for="flexCheckChecked">
+                Segment B (7)
+              </label>
+            </div>
+
+
+            <div class="dropdown-item">
+              <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckChecked" checked>
+              <label class="form-check-label" for="flexCheckChecked">
+                Segment C (14)
+              </label>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <div class="me-1">
+        <div class="dropdown">
+          <button class="btn bg-light dropdown-toggle border boraderChek" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Assignee: All
+          </button>
+  
+          <div class="dropdown-menu">
+            <div class="dropdown-item">
+              <input class="form-check-input me-2 " type="checkbox" value="" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault">
+                Assignee A
+              </label>
+            </div>
+  
+            <div class="dropdown-item">
+              <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckChecked" checked>
+              <label class="form-check-label" for="flexCheckChecked">
+                Assignee B
+              </label>
+            </div>
+  
+  
+            <div class="dropdown-item">
+              <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckChecked" checked>
+              <label class="form-check-label" for="flexCheckChecked">
+                Assignee C
+              </label>
+            </div>
+  
+          </div>
+  
+        </div>
+      </div>
+  
+  
+      <div class="">
+      <div class="dropdown">
+        <button class="btn bg-light dropdown-toggle border boraderChek" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+         Status: All
+        </button>
+  
+        <div class="dropdown-menu">
+          <div class="dropdown-item">
+            <input class="form-check-input me-2 " type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              Status A
+            </label>
+          </div>
+  
+          <div class="dropdown-item">
+            <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckChecked" checked>
+            <label class="form-check-label" for="flexCheckChecked">
+              Status B
+            </label>
+          </div>
+  
+  
+          <div class="dropdown-item">
+            <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckChecked" checked>
+            <label class="form-check-label" for="flexCheckChecked">
+              Status C
+            </label>
+          </div>
+  
+        </div>
+  
+      </div>
+     </div>
+    </div>
+
+
+
+    <div class="col-lg-3 mb-sm-2 col-md-12 mst-1 me-1">
+      <div class="search">
+        <i class="fa fa-search"></i>
+        <input type="text" class="form-control" 
+        placeholder="Search by name or flag"
+        [(ngModel)]="term"
+        >
+      </div>
+    </div>
+
+    <div class="col-lg-2 col-md-12 ms-2">
+      <div class="pb-1">
+        <button class="btn btn-primary border text-uppercase"><i class="fa-solid fa-plus me-2"></i>add deal</button>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="row mt-3 deals-rext">
+    <!--Potential Value -->
+    <div class="col-lg-2 col-md-12 ms-2 me-4 bg-gray "  
+      #potentialList="cdkDropList" cdkDropList 
+      [cdkDropListData]="potentialValues"
+      [cdkDropListConnectedTo]="[focusList,contactMadeList,offerSentList,GettingReadyList]" 
+      (cdkDropListDropped)="drop($event,'Potential Value')">
+
+      <div class="d-flex p-2 flex-column  justify-content-start align-items-stretch"  >
+        <p class="pt-2 h5">Potential Value</p>
+        <div class="d-flex justify-content-bettween">
+          <span class="pb-2 me-1 text-gray"><i class="fa-solid fa-clipboard-list me-1"></i>{{potentialValues.length}}</span>
+          <span class="mx-2 pb-2 me-1 text-gray"><span  class="tooltipBella lh-sm px-1 bg-DarkGry border rounded-pill text-light me-1">N0K
+          <span class="testSpan">Total Focus Value 2 233 123 NOK , {{potentialValues.length}} Deals</span>
+          </span>2.33min</span>
+          <span class="pb-2 mx-1 text-gray"><i class="fa-regular fa-bell me-1"></i>{{pinPotential}}</span>
+        </div>
+        <div>
+          <div cdkDrag *ngFor="let item of potentialValues | filter:term" >
+            <div class="border rounded mb-3 itemDeal ps-1 pb-2 card" >
+              <div class="container">
+                <div class="row">
+                  <span class="col-8">{{item.company|custom}}</span>
+                  <div class="offset-2 col-1 "><i *ngIf="item.pin" class="fa-solid fa-thumbtack pt-2"></i></div>
+                  <div class="dropdown col-1">
+                    <i style="cursor: pointer;" class="fa-solid fa-ellipsis" id="dropdownMenuButton1" data-bs-toggle="dropdown"></i>
+                    <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
+                      <li><a (click)="addPin(item.id , item ,item.status)" class="dropdown-item" >Pin</a></li>
+                      <li><a (click)="removePin(item.id , item ,item.status)" class="dropdown-item" >Unpin</a></li>
+                    </ul>
+                  </div>
+                </div>
+
+              </div>
+
+
+              <div class="d-flex pt-2 ">
+                <span class="p-1 ms-1 me-1 rounded bg-DarkGry text-light">{{item.state}}</span>
+                <span class="tooltipBella p-1 rounded bg-primary text-light">{{item.probability_status}}
+                  <span class="testSpan">probability status is {{item.probability_status}}</span>
+                </span>
+              </div>
+
+              <div class="d-flex flex-column mt-3 text-gray">
+                <div class=""><i class="fa-solid fa-phone me-1"></i>{{item.first_name}}  {{item.last_name}}                 
+               </div>
+               <div class="ms-3">{{item.phone}}</div>
+              </div>
+
+              <div class="mt-1 text-gray">
+                <p class="me-2"><i class="fa-regular fa-clipboard me-1"></i>{{item.date}} </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+    <!--Focus  -->
+    <div class="col-lg-2 col-md-12 ms-2 me-4 bg-gray" cdkDropList 
+    #focusList="cdkDropList" 
+    [cdkDropListData]="focusValues"
+    [cdkDropListConnectedTo]="[potentialList ,contactMadeList ,offerSentList,GettingReadyList]"
+    (cdkDropListDropped)="drop($event,'Focus')">
+
+      <div class="d-flex p-2 flex-column  justify-content-start align-items-stretch vh-100">
+        <p class="pt-2 h5">Focus</p>
+        <div class="d-flex justify-content-bettween">
+          <span class="pb-2 me-1 text-gray"><i class="fa-solid fa-clipboard-list me-1"></i>{{focusValues.length}}</span>
+          <span class="mx-2 pb-2 me-1 text-gray"><span  class="tooltipBella lh-sm px-1 bg-DarkGry border rounded-pill text-light me-1">N0K
+            <span class="testSpan">Total Focus Value 2 233 123 NOK , {{focusValues.length}} Deals</span>
+          </span>2.33min</span>
+          <span class="pb-2 mx-1 text-gray"><i class="fa-regular fa-bell me-1"></i>{{pinFocus}}</span>
+        </div>
+        <div>
+
+          <div *ngFor="let item of focusValues | filter:term" cdkDrag>
+            <div class="border rounded mb-3 itemDeal ps-1 pb-2 card">
+              <div class="container">
+                <div class="row">
+                  <span class="col-8">{{item.company|custom}}</span>
+                  <div class="offset-2 col-1 "><i *ngIf="item.pin" class="fa-solid fa-thumbtack pt-2"></i></div>
+                  <div class="dropdown col-1">
+                    <i style="cursor: pointer;" class="fa-solid fa-ellipsis" id="dropdownMenuButton1" data-bs-toggle="dropdown"></i>
+                    <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
+                      <li><a (click)="addPin(item.id , item ,item.status)" class="dropdown-item" >Pin</a></li>
+                      <li><a (click)="removePin(item.id , item ,item.status)" class="dropdown-item" >Unpin</a></li>
+                    </ul>
+                  </div>
+                </div>
+
+              </div>
+
+
+              <div class="d-flex pt-2 ">
+                <span class="p-1 ms-1 me-1 rounded bg-DarkGry text-light">{{item.state}}</span>
+                <span class="tooltipBella p-1 rounded bg-primary text-light">{{item.probability_status}}
+                  <span class="testSpan">probability status is {{item.probability_status}}</span>
+                </span>
+              </div>
+
+              <div class="d-flex flex-column mt-3 text-gray">
+                <div class=""><i class="fa-solid fa-phone me-1"></i>{{item.first_name}}  {{item.last_name}}                 
+               </div>
+               <div class="ms-3">{{item.phone}}</div>
+              </div>
+
+              <div class="mt-1 text-gray">
+                <p class="me-2"><i class="fa-regular fa-clipboard me-1"></i>{{item.date}} </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+
+    <!-- Contact Made -->
+    <div class="col-lg-2 col-md-12 ms-2 me-4 bg-gray"  cdkDropList 
+    #contactMadeList="cdkDropList" 
+    [cdkDropListData]="contactMadeValues"
+    [cdkDropListConnectedTo]="[focusList,potentialList ,offerSentList,GettingReadyList]"
+    (cdkDropListDropped)="drop($event ,'Contact Made')">
+
+      <div class="d-flex p-2 flex-column  justify-content-start align-items-stretch">
+        <p class="pt-2 h5">Contact Made</p>
+        <div class="d-flex justify-content-bettween">
+          <span class="pb-2 me-1 text-gray"><i class="fa-solid fa-clipboard-list me-1"></i>{{contactMadeValues.length}}</span>
+          <span class="mx-2 pb-2 me-1 text-gray"><span  class="tooltipBella lh-sm px-1 bg-DarkGry border rounded-pill text-light me-1">N0K
+            <span class="testSpan">Total Focus Value 2 233 123 NOK , {{contactMadeValues.length}} Deals</span>
+          </span>2.33min</span>
+          <span class="pb-2 mx-1 text-gray"><i class="fa-regular fa-bell me-1"></i>{{pinContactMade}}</span>
+        </div>
+        <div>
+          <div *ngFor="let item of contactMadeValues | filter:term" cdkDrag>
+            <div class="border rounded mb-3 itemDeal ps-1 pb-2 card">
+              <div class="container">
+                <div class="row">
+                  <span class="col-8">{{item.company|custom}}</span>
+                  <div class="offset-2 col-1 "><i *ngIf="item.pin" class="fa-solid fa-thumbtack pt-2"></i></div>
+                  <div class="dropdown col-1">
+                    <i style="cursor: pointer;" class="fa-solid fa-ellipsis" id="dropdownMenuButton1" data-bs-toggle="dropdown"></i>
+                    <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
+                      <li><a (click)="addPin(item.id , item ,item.status)" class="dropdown-item" >Pin</a></li>
+                      <li><a (click)="removePin(item.id , item ,item.status)" class="dropdown-item" >Unpin</a></li>
+                    </ul>
+                  </div>
+                </div>
+  
+              </div>
+  
+  
+              <div class="d-flex pt-2 ">
+                <span class="p-1 ms-1 me-1 rounded bg-DarkGry text-light">{{item.state}}</span>
+                <span class="tooltipBella p-1 rounded bg-primary text-light">{{item.probability_status}}
+                  <span class="testSpan">probability status is {{item.probability_status}}</span>
+                </span>
+              </div>
+
+
+              <div class="d-flex flex-column mt-3 text-gray">
+                <div class=""><i class="fa-solid fa-phone me-1"></i>{{item.first_name}}  {{item.last_name}}                 
+               </div>
+               <div class="ms-3">{{item.phone}}</div>
+              </div>
+
+              <div class="mt-1 text-gray">
+                <p class="me-2"><i class="fa-regular fa-clipboard me-1"></i>{{item.date}} </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+
+
+        <!-- Offer Sent -->
+        <div class="col-lg-2 col-md-12 ms-2 me-4 bg-gray" cdkDropList 
+        #offerSentList="cdkDropList" 
+        [cdkDropListData]="offerSentValues"
+        [cdkDropListConnectedTo]="[focusList,potentialList,contactMadeList,GettingReadyList]"
+        (cdkDropListDropped)="drop($event ,'Offer Sent')">
+
+          <div class="d-flex p-2 flex-column  justify-content-start align-items-stretch">
+            <p class="pt-2 h5">Offer Sent</p>
+            <div class="d-flex justify-content-bettween">
+              <span class="pb-2 me-1 text-gray"><i class="fa-solid fa-clipboard-list me-1"></i>{{offerSentValues.length}}</span>
+              <span class="mx-2 pb-2 me-1 text-gray"><span class="tooltipBella lh-sm px-1 bg-DarkGry border rounded-pill text-light me-1">N0K
+                  <span class="testSpan">Total Focus Value 2 233 123 NOK , {{offerSentValues.length}} Deals</span>
+              </span>2.33min</span>
+              <span class="pb-2 mx-1 text-gray"><i class="fa-regular fa-bell me-1"></i>{{pinOfferSent}}</span>
+            </div>
+            <div *ngFor="let item of offerSentValues | filter:term" cdkDrag>
+              <div class="border rounded mb-3 itemDeal ps-1 pb-2 card">
+                <div class="container">
+                  <div class="row">
+                    <span class="col-8">{{item.company|custom}}</span>
+                    <div class="offset-2 col-1 "><i *ngIf="item.pin" class="fa-solid fa-thumbtack pt-2"></i></div>
+                    <div class="dropdown col-1">
+                      <i style="cursor: pointer;" class="fa-solid fa-ellipsis" id="dropdownMenuButton1" data-bs-toggle="dropdown"></i>
+                      <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
+                        <li><a (click)="addPin(item.id , item ,item.status)" class="dropdown-item" >Pin</a></li>
+                        <li><a (click)="removePin(item.id , item ,item.status)" class="dropdown-item" >Unpin</a></li>
+                      </ul>
+                    </div>
+                  </div>
+
+                </div>
+
+
+                <div class="d-flex pt-2 ">
+                  <span class="p-1 ms-1 me-1 rounded bg-DarkGry text-light">{{item.state}}</span>
+                  <span class="tooltipBella p-1 rounded bg-primary text-light">{{item.probability_status}}
+                    <span class="testSpan">probability status is {{item.probability_status}}</span>
+                  </span>
+                </div>
+                <div class="d-flex flex-column mt-3 text-gray">
+                  <div class=""><i class="fa-solid fa-phone me-1"></i>{{item.first_name}}  {{item.last_name}}                 
+                 </div>
+                 <div class="ms-3">{{item.phone}}</div>
+                </div>
+  
+                <div class="mt-1 text-gray">
+                  <p class="me-2"><i class="fa-regular fa-clipboard me-1"></i>{{item.date}} </p>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+        <!-- Getting Ready. -->
+        <div class="col-lg-2 col-md-12 ms-2 me-4 bg-gray" cdkDropList 
+        #GettingReadyList="cdkDropList" 
+        [cdkDropListData]="gettingReady"
+        [cdkDropListConnectedTo]="[focusList,potentialList,contactMadeList,offerSentList]"
+        (cdkDropListDropped)="drop($event ,'Getting Ready')">
+
+          <div class="d-flex p-2 flex-column  justify-content-start align-items-stretch">
+            <p class="pt-2 h5">Getting Ready</p>
+            <div class="d-flex justify-content-bettween">
+              <span class="pb-2 me-1 text-gray"><i class="fa-solid fa-clipboard-list me-1"></i>{{gettingReady.length}}</span>
+              <span class="mx-2 pb-2 me-1 text-gray"><span class="tooltipBella lh-sm px-1 bg-DarkGry border rounded-pill text-light me-1">N0K
+                  <span class="testSpan">Total Focus Value 2 233 123 NOK , {{gettingReady.length}} Deals</span>
+              </span>2.33min</span>
+              <span class="pb-2 mx-1 text-gray"><i class="fa-regular fa-bell me-1"></i>{{pinGettingReady}}</span>
+            </div>
+            <div *ngFor="let item of gettingReady | filter:term" cdkDrag>
+              <div class="border rounded mb-3 itemDeal ps-1 pb-2 card">
+                <div class="container">
+                  <div class="row">
+                    <span class="col-8">{{item.company|custom}}</span>
+                    <div class="offset-2 col-1 "><i *ngIf="item.pin" class="fa-solid fa-thumbtack pt-2"></i></div>
+                    <div class="dropdown col-1">
+                      <i style="cursor: pointer;" class="fa-solid fa-ellipsis" id="dropdownMenuButton1" data-bs-toggle="dropdown"></i>
+                      <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
+                        <li><a (click)="addPin(item.id , item ,item.status)" class="dropdown-item" >Pin</a></li>
+                        <li><a (click)="removePin(item.id , item ,item.status)" class="dropdown-item" >Unpin</a></li>
+                      </ul>
+                    </div>
+                  </div>
+
+                </div>
+
+
+                <div class="d-flex pt-2 ">
+                  <span class="p-1 ms-1 me-1 rounded bg-DarkGry text-light">{{item.state}}</span>
+                </div>
+                <div class="bg-light tooltipBella">
+                  <progress class="tooltipBella"  value="{{item.probability_status|percentage}}" max="100"></progress>
+                  <span class="testSpan">probability status is {{item.probability_status}}</span>
+
+                </div>
+
+                <div class="d-flex flex-column mt-3 text-gray">
+                  <div class=""><i class="fa-solid fa-phone me-1"></i>{{item.first_name}}  {{item.last_name}}                 
+                 </div>
+                 <div class="ms-3">{{item.phone}}</div>
+                </div>
+  
+                <div class="mt-1 text-gray">
+                  <p class="me-2"><i class="fa-regular fa-clipboard me-1"></i>{{item.date}} </p>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+  </div>
+
+</div>
+
+
